@@ -8,13 +8,20 @@ import '../network/pokemon_api_service.dart';
 
 class PokemonProvider extends ChangeNotifier {
   List<Pokemon> _allPokemon = [];
+  Pokemon? _selectedPokemon;
 
   List<Pokemon> get allPokemon => _allPokemon;
+  Pokemon? get selectedPokemon => _selectedPokemon;
 
   Future<void> getPokemons() async {
     final apiService = PokemonApiService();
     _allPokemon = await apiService.getPokemonList();
     log('getPokemons: ${_allPokemon.length}');
+    notifyListeners();
+  }
+
+  void setSelectedPokemon(Pokemon pokemon) {
+    _selectedPokemon = pokemon;
     notifyListeners();
   }
 }

@@ -7,7 +7,7 @@ class Pokemon {
   String? height;
   String? category;
   String? weight;
-  String? typeofpokemon;
+  List? typeofpokemon;
   String? weaknesses;
   String? evolutions;
   String? abilities;
@@ -66,7 +66,7 @@ class Pokemon {
     height = json['height'];
     category = json['category'];
     weight = json['weight'];
-    typeofpokemon = json['typeofpokemon'].toString();
+    typeofpokemon = json['typeofpokemon'];
     weaknesses = json['weaknesses'].toString();
     evolutions = json['evolutions'].toString();
     abilities = json['abilities'].toString();
