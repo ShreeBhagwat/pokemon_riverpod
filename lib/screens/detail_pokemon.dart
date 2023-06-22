@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pokemon_riverpod/utlis/helper.dart';
 
 import '../Providers/pokemon_provider.dart';
+import '../widgets/pokemon_detail_widget.dart';
 import '../widgets/rotating_pokeball.dart';
 
 class DetailPokemonScreen extends ConsumerWidget {
@@ -17,6 +18,7 @@ class DetailPokemonScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        iconTheme: const IconThemeData(color: Colors.white),
         actions: [
           IconButton(
             icon: const Icon(
@@ -67,7 +69,9 @@ class DetailPokemonScreen extends ConsumerWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    '${pokemonNotifier.selectedPokemon!.typeofpokemon![0]}',
+                    Helper.getStringOutOfList(pokemonNotifier
+                        .selectedPokemon!.typeofpokemon!
+                        .toString()),
                     style: const TextStyle(color: Colors.white),
                   ),
                 ),
@@ -93,6 +97,49 @@ class DetailPokemonScreen extends ConsumerWidget {
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(50),
                   topRight: Radius.circular(50),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        pokemonNotifier.selectedPokemon!.xdescription!,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    PokemonDetailWidget(
+                      width: width,
+                      title: 'Type',
+                      value: pokemonNotifier.selectedPokemon!.typeofpokemon![0],
+                    ),
+                    PokemonDetailWidget(
+                      width: width,
+                      title: 'Category',
+                      value: pokemonNotifier.selectedPokemon!.category!,
+                    ),
+                    PokemonDetailWidget(
+                      width: width,
+                      title: 'Height',
+                      value: pokemonNotifier.selectedPokemon!.height!,
+                    ),
+                    PokemonDetailWidget(
+                      width: width,
+                      title: 'Weight',
+                      value: pokemonNotifier.selectedPokemon!.weight!,
+                    ),
+                    PokemonDetailWidget(
+                      width: width,
+                      title: 'Weakness',
+                      value: Helper.getStringOutOfList(
+                          pokemonNotifier.selectedPokemon!.weaknesses!),
+                    ),
+                  ],
                 ),
               ),
             ),

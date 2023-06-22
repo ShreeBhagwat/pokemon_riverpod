@@ -4,6 +4,10 @@ import 'package:pokemon_riverpod/utlis/constant.dart';
 enum MessageType { info, success, warning, error }
 
 class Helper {
+  static String getStringOutOfList(String stringList) {
+    return stringList.toString().replaceAll('[', '').replaceAll(']', '');
+  }
+
   static Color getSnackBarDecoColour({required MessageType type}) {
     switch (type) {
       case MessageType.info:
