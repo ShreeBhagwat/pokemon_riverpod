@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pokemon_riverpod/Providers/theme_provider.dart';
 import 'package:pokemon_riverpod/screens/all_pokemon_list.dart';
+import 'package:pokemon_riverpod/screens/splash_screen.dart';
 import 'package:pokemon_riverpod/theme/styles.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class PokemonRiverpod extends StatelessWidget {
       return MaterialApp(
         theme: Styles.themeData(themeNotifier.isDarkMode, context),
         debugShowCheckedModeBanner: false,
-        home: AllPokemonList(),
+        home: SplashScreen(),
       );
     });
   }
