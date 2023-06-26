@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pokemon_riverpod/Providers/theme_provider.dart';
-import 'package:pokemon_riverpod/screens/all_pokemon_list.dart';
 import 'package:pokemon_riverpod/screens/splash_screen.dart';
 import 'package:pokemon_riverpod/theme/styles.dart';
 
-void main() {
-  runApp(ProviderScope(child: PokemonRiverpod()));
+import 'model/pokemon.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(PokemonAdapter());
+  runApp(const ProviderScope(child: PokemonRiverpod()));
 }
 
 class PokemonRiverpod extends StatelessWidget {
@@ -19,7 +24,7 @@ class PokemonRiverpod extends StatelessWidget {
       return MaterialApp(
         theme: Styles.themeData(themeNotifier.isDarkMode, context),
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: const SplashScreen(),
       );
     });
   }

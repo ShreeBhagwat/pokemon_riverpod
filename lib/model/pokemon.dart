@@ -1,30 +1,63 @@
+
+import 'package:hive/hive.dart';
+
+part 'pokemon.g.dart';
+
+@HiveType(typeId: 00)
 class Pokemon {
+  @HiveField(0)
   String? name;
+  @HiveField(1)
   String? id;
+  @HiveField(2)
   String? imageurl;
+  @HiveField(3)
   String? xdescription;
+  @HiveField(4)
   String? ydescription;
+  @HiveField(5)
   String? height;
+  @HiveField(6)
   String? category;
+  @HiveField(7)
   String? weight;
+  @HiveField(8)
   List? typeofpokemon;
+  @HiveField(9)
   String? weaknesses;
+  @HiveField(10)
   String? evolutions;
+  @HiveField(11)
   String? abilities;
+  @HiveField(12)
   int? hp;
+  @HiveField(13)
   int? attack;
+  @HiveField(14)
   int? defense;
+  @HiveField(15)
   int? special_attack;
+  @HiveField(16)
   int? special_defense;
+  @HiveField(17)
   int? speed;
+  @HiveField(18)
   int? total;
+  @HiveField(19)
   String? male_percentage;
+  @HiveField(20)
   String? female_percentage;
+  @HiveField(21)
   int? genderless;
+  @HiveField(22)
   String? cycles;
+  @HiveField(23)
   String? egg_groups;
+  @HiveField(24)
   String? evolvedfrom;
+  @HiveField(25)
   String? reason;
+  @HiveField(26)
   String? base_exp;
 
   Pokemon({

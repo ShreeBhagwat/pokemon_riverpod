@@ -21,6 +21,7 @@ class _AllPokemonListState extends ConsumerState<AllPokemonList> {
   void initState() {
     super.initState();
     Future.microtask(() async {
+      await ref.read(pokemonProvider).getFavPokemon();
       await ref.read(pokemonProvider).getPokemons();
     });
   }
@@ -118,6 +119,7 @@ class _AllPokemonListState extends ConsumerState<AllPokemonList> {
                       ),
                       onTap: () {
                         pokemonNotifier.setSelectedPokemon(pokemon);
+                        
                         Navigator.push(
                           context,
                           MaterialPageRoute(
