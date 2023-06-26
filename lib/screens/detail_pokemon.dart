@@ -17,27 +17,29 @@ class DetailPokemonScreen extends ConsumerWidget {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     final pokemonNotifier = ref.watch(pokemonProvider);
+   
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         iconTheme: const IconThemeData(color: Colors.white),
         actions: [
           IconButton(
-            icon: pokemonNotifier.isFav
-                ? const Icon(
-                    Icons.favorite,
-                    size: 30,
-                    color: Colors.red,
-                  )
-                : const Icon(
-                    Icons.favorite_border,
-                    size: 30,
-                    color: Colors.white,
-                  ),
-            onPressed: () async {
-              pokemonNotifier.toggleFavPokemon();
-            },
-          ),
+                icon:pokemonNotifier.isFav == true
+                    ? const Icon(
+                        Icons.favorite,
+                        size: 30,
+                        color: Colors.red,
+                      )
+                    : const Icon(
+                        Icons.favorite_border,
+                        size: 30,
+                        color: Colors.white,
+                      ),
+                onPressed: () async {
+                  pokemonNotifier.toggleFavPokemon();
+                },
+              )
         ],
       ),
       backgroundColor: Helper.getPokemonCardColour(

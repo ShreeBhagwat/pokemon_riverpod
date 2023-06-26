@@ -8,6 +8,7 @@ import 'package:pokemon_riverpod/Providers/theme_provider.dart';
 import 'package:pokemon_riverpod/screens/detail_pokemon.dart';
 
 import '../utlis/helper.dart';
+import 'fav_screen.dart';
 
 class AllPokemonList extends ConsumerStatefulWidget {
   const AllPokemonList({super.key});
@@ -35,6 +36,12 @@ class _AllPokemonListState extends ConsumerState<AllPokemonList> {
           backgroundColor: Theme.of(context).cardColor,
           title: const Text('All Pokemon'),
           actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const FavScreen()));
+                },
+                icon: const Icon(Icons.favorite)),
             IconButton(
               icon: const Icon(Icons.light_mode),
               onPressed: () {
@@ -119,7 +126,7 @@ class _AllPokemonListState extends ConsumerState<AllPokemonList> {
                       ),
                       onTap: () {
                         pokemonNotifier.setSelectedPokemon(pokemon);
-                        
+
                         Navigator.push(
                           context,
                           MaterialPageRoute(
